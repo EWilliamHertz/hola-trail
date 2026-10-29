@@ -262,6 +262,12 @@ function setStatus(text, error = false) {
 // Format friendly Firebase Auth error messages
 function formatAuthError(code, message) {
   switch (code) {
+    case 'auth/configuration-not-found':
+      return 'Firebase Authentication is not activated in this project yet. Please open Firebase Console > Build > Authentication, click "Get started", and enable the Email/Password sign-in method.';
+    case 'auth/operation-not-allowed':
+      return 'Email/Password sign-in is currently disabled. Please enable "Email/Password" in Firebase Console > Authentication > Sign-in method.';
+    case 'auth/unauthorized-domain':
+      return 'This domain is not authorized. Please add it in Firebase Console > Authentication > Settings > Authorized domains.';
     case 'auth/invalid-email':
       return 'Please enter a valid email address.';
     case 'auth/user-not-found':
